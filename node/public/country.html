@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>Country App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div style="margin:100px;">
+   
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Country App</a>
+    <ul class="nav navbar-nav">
+      <li >
+        <a href="/">Home</a>
+      </li>
+      <li class="active">
+        <a href="/country-list">Country List</a>
+
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron" >
+        <h1 style="padding: 30px;">Country List</h1>
+        <!-- <a href="https://api.whatsapp.com/send?phone=923222435117" target="_blank">Send Message</a> -->
+        <div class="">
+
+            <table class="jumbotron col-md-12 table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="mx-3">Id</th>
+                        <th class="mx-3">Country</th>
+                        <th class="mx-3">Continent</th>
+                        <th class="mx-3">Language</th>
+                    </tr>
+                </thead>
+                
+                <tbody id="country-table">
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+  </div>
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script>
+        $(document).ready(function () {
+              $.ajax({
+                type: 'GET',
+                url: '/send-country-list',
+                dataType: 'json',
+                error: function(xhr, status, error) {
+                  var err = JSON.parse(xhr.responseText);
+                  alert('Unable to get country list. please try again!');
+                },
+                success: function (response) {
+                  var country = response.countriees
+                  country.map(function ( country,i)
+                  {
+                    var row = '<tr><td>' + i + '</td><td>' + country.name+'</td><td>' + country.continent+'</td><td>' + country.languages+'</td><tr>'
+                      $('#country-table').append(row);
+
+                  });
+                }});
+  });
+
+    </script> 
+</body>
+</html>

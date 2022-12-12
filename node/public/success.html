@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>Country App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div style="margin:100px;">
+   
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Country App</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="/">Add Country</a>
+      </li>
+      <li>
+        <a href="/country-list">Country List</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron"  style="padding:50px;">
+      
+      <h1 style="color: rgb(39, 231, 55);">Country Added Successfuly!</h1>
+    </div>
+  </div>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script> -->
+<!-- <script>
+  
+  $(document).on('click', '#country_name',function (e) {
+    e.preventDefault();
+    let cont_val = $('#country').val();
+    $('.country').empty();
+    
+    // console.log(cont_val)
+
+              $.ajax({
+                type: 'GET',
+                url: 'https://restcountries.com/v3.1/name/'+ cont_val,
+                dataType: 'json',
+                error: function(xhr, status, error) {
+                  var err = JSON.parse(xhr.responseText);
+                  alert('Invalid name! Please enter a valid name.');
+                },
+                success: function (response) {
+                  console.log(response);
+
+              
+              const img = document.createElement("img");
+              img.src = response[0].flags.png;
+              const imgdiv = document.getElementById("img_div");
+              imgdiv.appendChild(img);
+
+                  // country name config
+              const cname = Object.values(response[0].name.nativeName); 
+              $('.country').append(cname.map(function (el) {
+                 return $('<li>').text(el.official);
+              }));
+
+              // language config
+              const lang = Object.values(response[0].languages); 
+              $('.languages').append(lang.map(function (el) {
+                 return $('<li>').text(el);
+              }));
+                }
+              }
+              );
+  });
+
+    </script> -->
+</body>
+</html>
